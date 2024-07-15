@@ -1,0 +1,3 @@
+chromium version 120 is the last version to Support "Copy Link To Text" flag
+
+use --disable-features=CustomizeChromeSidePanel with chromium 125
