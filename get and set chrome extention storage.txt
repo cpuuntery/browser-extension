@@ -1,0 +1,93 @@
+run this twice to get chrome.storage.local
+
+(function() {
+    // Get all data from chrome.storage.local
+    chrome.storage.local.get(null, function(localStorageData) {
+        // Convert the data to a JSON string
+        localStorageString = JSON.stringify(localStorageData);
+    });
+})();
+copy(localStorageString)
+
+
+run this twice to get chrome.storage.local
+
+(function() {
+    // Create an object to hold the chrome.storage.local data
+    let storageData = {};
+
+    // Retrieve all items from chrome.storage.local
+    chrome.storage.local.get(null, function(items) {
+        storageData = items;
+
+        // Convert the data to a JSON string
+        storageString = JSON.stringify(storageData);
+    });
+})();
+copy(storageString)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+set using this
+
+(function() {
+    // Prompt the user to paste the JSON string from the clipboard
+    let localStorageString = prompt('Paste the LocalStorage data here:');
+
+    if (localStorageString) {
+        try {
+            // Parse the JSON string to get the data object
+            let localStorageData = JSON.parse(localStorageString);
+
+            // Set the values in chrome.storage.local
+            chrome.storage.local.set(localStorageData, function() {
+                console.log('LocalStorage data transferred successfully.');
+            });
+        } catch (e) {
+            console.error('Error parsing LocalStorage data: ', e);
+        }
+    } else {
+        console.log('No data pasted.');
+    }
+})();
+
+
+
+
+
+
+
+or using this
+
+(function() {
+    // Prompt the user to paste the JSON string from the clipboard
+    let localStorageString = prompt('Paste the LocalStorage data here:');
+
+    if (localStorageString) {
+        try {
+            // Parse the JSON string to get the data object
+            let storageData = JSON.parse(localStorageString);
+
+            // Set the values in chrome.storage.local
+            chrome.storage.local.set(storageData, function() {
+                console.log('chrome.storage.local data transferred successfully.');
+            });
+        } catch (e) {
+            console.error('Error parsing storage data: ', e);
+        }
+    } else {
+        console.log('No data pasted.');
+    }
+})();
